@@ -15,7 +15,10 @@ void shell_sort(int *array, size_t size)
 	if (!array || size < 2)
 		return;
 
-	for (gap = (size / 3 + 1); gap > 0; gap /= 3)
+	for (gap = 1; gap < size; gap = 3 * gap + 1)
+		;
+
+	for (gap = (gap - 1) / 3; gap > 0; gap = (gap - 1) / 3)
 	{
 		for (i = gap; i < size; i++)
 		{
