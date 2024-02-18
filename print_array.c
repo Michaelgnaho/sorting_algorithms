@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include <stdlib.h>
 #include <stdio.h>
 
 /**
@@ -9,6 +10,7 @@
  */
 void print_array(const int *array, size_t size)
 {
+    size_t i;
     size_t i;
 
     i = 0;
