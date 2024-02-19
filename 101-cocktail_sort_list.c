@@ -23,12 +23,8 @@ node2->next->prev = node1;
 
 node1->next = node2->next;
 node2->prev = node1->prev;
-
-if (node1->next != NULL)
-node1->next->prev = node1;
-
-node2->next = node1;
 node1->prev = node2;
+node2->next = node1;
 }
 
 /**
@@ -48,9 +44,9 @@ return;
 while (swapped)
 {
 swapped = 0;
-
+current = *list;
 /* Forward pass */
-for (current = *list; current->next != NULL; current = current->next)
+while (current->next != NULL)
 {
 next = current->next;
 if (current->n > next->n)
@@ -58,16 +54,15 @@ if (current->n > next->n)
 swap_node(current, next, list);
 swapped = 1;
 print_list(*list);
-
 }
+else
+current = current->next;
 }
 if (!swapped)
 break;
-
 swapped = 0;
-
 /* Backward pass */
-for (; current->prev != NULL; current = current->prev)
+while (current->prev != NULL)
 {
 next = current->prev;
 if (current->n < next->n)
@@ -75,8 +70,9 @@ if (current->n < next->n)
 swap_node(next, current, list);
 swapped = 1;
 print_list(*list);
-
 }
+else
+current = current->prev;
 }
 }
 }
